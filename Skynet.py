@@ -29,7 +29,22 @@ print(df.dtypes)                # вывел на экран структуру 
 <VOL>        int64
 dtype: object
 '''
+df['<DATE>'] = pd.to_datetime(df['<DATE>'], format='%Y%m%d')            # преобразую столбец <DATE> в формат datetime
+print(df.head(5))
+print(df.dtypes)
 
+'''
+<DATE>     datetime64[ns]
+<TIME>              int64
+<OPEN>            float64
+<HIGH>            float64
+<LOW>             float64
+<CLOSE>           float64
+<VOL>               int64
+dtype: object
+'''
+
+df.to_csv('test2.csv')                                                   # сохраняю результат в другом файле
 
 
 
