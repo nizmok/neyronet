@@ -11,6 +11,7 @@ from tensorflow.keras.layers import LSTM, Dense
 
 df = pd.read_csv('E:/Data/SBER/SBER_05122023_06122023.csv')
 print(df.shape, df.columns)
+# (3981, 7) Index(['<DATE>', '<TIME>', '<OPEN>', '<HIGH>', '<LOW>', '<CLOSE>', '<VOL>'], dtype='object')
 
 #df = df.drop('<TIME>',axis=1)          # 'это если нужно убрать ненужные колонки
 #print(df)
@@ -79,9 +80,41 @@ train_predict = model.predict(X_test)
 train_predict = scaler.inverse_transform(train_predict)
 y_test = scaler.inverse_transform([y_test])
 
-# Визуализация результатов
+# Визуализация результатов                     'График результата обучения сети lstm .png'
 plt.plot(data_test, label='Исходный временной ряд')
 plt.plot(np.arange(look_back, len(train_predict) + look_back), train_predict, label='Предсказание')
 plt.legend()
 plt.show()
+
+
+
+'''
+Epoch 1/10
+3174/3174 - 7s - loss: 0.0159 - accuracy: 3.1506e-04 - 7s/epoch - 2ms/step
+Epoch 2/10
+3174/3174 - 5s - loss: 0.0019 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 3/10
+3174/3174 - 5s - loss: 0.0011 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 4/10
+3174/3174 - 5s - loss: 8.8108e-04 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 5/10
+3174/3174 - 5s - loss: 8.3405e-04 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 6/10
+3174/3174 - 5s - loss: 7.8119e-04 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 7/10
+3174/3174 - 5s - loss: 7.6613e-04 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 8/10
+3174/3174 - 5s - loss: 7.0729e-04 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 9/10
+3174/3174 - 5s - loss: 7.0552e-04 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+Epoch 10/10
+3174/3174 - 5s - loss: 6.9747e-04 - accuracy: 3.1506e-04 - 5s/epoch - 2ms/step
+25/25 - 1s - loss: 0.0021 - accuracy: 0.0013 - 583ms/epoch - 23ms/step
+25/25 [==============================] - 1s 1ms/step
+
+Process finished with exit code 0
+
+'''
+
+
 
